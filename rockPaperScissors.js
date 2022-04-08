@@ -2,7 +2,8 @@ const getUserChoice = userInput => {
     userInput = userInput.toLowerCase();
     if (userInput === 'rock' ||
         userInput === 'paper' ||
-        userInput === 'scissors') {
+        userInput === 'scissors' ||
+        userInput === 'bomb') {
           return userInput;
         } else {
           return `Plese input rock paper or scissors`;
@@ -29,7 +30,10 @@ const getUserChoice = userInput => {
   const determineWinner = (userChoice, computerChoice) => {
     let computerWin = 'Computer Wins !!!';
     let userWin = 'User wins !!!';
-    if (userChoice === computerChoice) {
+    
+    if (userChoice === 'bomb') {
+        return 'User wins - BOOOOM!';
+    } else if (userChoice === computerChoice) {
       return `Game Tied !!!`;
     } else if (userChoice === 'rock') {
         if (computerChoice === 'paper') {
@@ -55,7 +59,7 @@ const getUserChoice = userInput => {
 
 const playGame = () => {
   console.log('Rock Paper Scissors ...')
-  let userChoice = getUserChoice('rock');
+  let userChoice = getUserChoice('bomb');
   console.log('User Choice: ' + userChoice);
   let computerChoice = getComputerChoice();;
   console.log('Comuter Choice: ' + computerChoice);
